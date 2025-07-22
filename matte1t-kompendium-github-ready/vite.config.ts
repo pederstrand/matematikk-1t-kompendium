@@ -6,3 +6,8 @@ export default defineConfig({
   plugins: [react()],
   base: './',
 })
+export default defineConfig({
+  base: './',
+  plugins: [react()],
+  publicDir: 'public'
+})
