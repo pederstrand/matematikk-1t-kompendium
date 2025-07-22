@@ -59,11 +59,40 @@ function ChapterPageWrapper() {
 
 function ChapterPage({ chapter, type }) {
   const navigate = useNavigate();
+  const isTargetPage = chapter === "Tall og algebra" && type === "Teori";
+
   return (
     <Layout>
       <button onClick={() => navigate(-1)} className="mb-4 text-blue-600 hover:underline">← Tilbake</button>
       <h1 className="text-2xl font-bold mb-4">{chapter} – {type}</h1>
-      <p className="text-gray-600">Innhold for "{type}" i "{chapter}" kommer her.</p>
+
+      {isTargetPage ? (
+        <div className="space-y-4 text-base leading-relaxed">
+          <p><strong>Algebra</strong> er matematikkens språk for det ukjente. I stedet for å jobbe med tall vi vet, jobber vi med symboler (variabler) for å finne ut hva tallene må være.</p>
+
+          <h2 className="text-xl font-semibold mt-6">Hva er en variabel?</h2>
+          <p>En variabel er en bokstav som representerer et ukjent tall. For eksempel: hvis du tjener 200 kr per time, og jobber <code>x</code> timer, er lønnen din <code>200x</code>.</p>
+
+          <h2 className="text-xl font-semibold mt-6">Å samle like ledd</h2>
+          <p>Du kan legge sammen ledd som har samme variabel: <code>3x + 5x = 8x</code></p>
+
+          <h2 className="text-xl font-semibold mt-6">Å gange ut parenteser</h2>
+          <p>Distribuer tallet utenfor parentesen til alle inni: <code>2(x + 4) = 2x + 8</code></p>
+
+          <h2 className="text-xl font-semibold mt-6">Hva er en likning?</h2>
+          <p>En likning sier at to uttrykk er like. Vi løser likningen ved å finne hvilken verdi av variabelen som gjør at det stemmer.</p>
+          <p>Eksempel: <code>2x + 3 = 11 → x = 4</code></p>
+
+          <h2 className="text-xl font-semibold mt-6">Likninger med brøker</h2>
+          <p>Du kan fjerne brøkene ved å multiplisere med fellesnevner: <code>x/2 + x/3 = 10 → 3x + 2x = 60 → x = 12</code></p>
+
+          <h2 className="text-xl font-semibold mt-6">Formelomforming</h2>
+          <p>Noen ganger kjenner vi alle tallene bortsett fra én. Da kan vi omforme formelen for å isolere den ukjente.</p>
+          <p>Eksempel: <code>A = l · b → b = A / l</code></p>
+        </div>
+      ) : (
+        <p className="text-gray-600">Innhold for "{type}" i "{chapter}" kommer her.</p>
+      )}
     </Layout>
   );
 }
